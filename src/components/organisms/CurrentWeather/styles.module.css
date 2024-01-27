@@ -1,0 +1,72 @@
+@import url("@/theme.css");
+
+.root {
+  background-color: var(--dark-background);
+  color: var(--dark-foreground);
+  padding: 1.5rem;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    color: var(--dark-foreground-active);
+  }
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.temperature {
+  font-size: 6rem;
+  font-weight: 200;
+  color: var(--dark-foreground-active);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.details {
+  display: flex;
+  margin-top: 16px;
+  color: var(--dark-foreground);
+  column-gap: 6px;
+}
+
+@media (min-width: 768px) {
+  .root {
+    flex-direction: row;
+    width: 40%;
+    order: 2;
+  }
+  .search {
+    display: none;
+  }
+}
