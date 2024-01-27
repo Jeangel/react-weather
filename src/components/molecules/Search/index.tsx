@@ -31,8 +31,15 @@ const Search = ({ theme = "dark" }: SearchProps) => {
         theme={theme}
         value={value}
         type="search"
+        data-cy="search-input"
       />
-      <Button disabled={!value} aria-label="Search" type="submit" theme={theme}>
+      <Button
+        disabled={!value}
+        aria-label="Search"
+        type="submit"
+        theme={theme}
+        data-cy="search-button"
+      >
         <IconSearch stroke={1} size={20} />
       </Button>
     </form>

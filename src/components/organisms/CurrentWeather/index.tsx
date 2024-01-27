@@ -29,7 +29,11 @@ const CurrentWeather = () => {
         <div className={styles.search}>
           <Search />
         </div>
-        <Button disabled={!weather} onClick={handleOnToggleFavorite}>
+        <Button
+          disabled={!weather}
+          onClick={handleOnToggleFavorite}
+          data-cy="favorite-button"
+        >
           {isFavorite ? (
             <IconHeartFilled stroke={1} size={20} />
           ) : (
@@ -56,12 +60,17 @@ const CurrentWeather = () => {
                 country={weather.country}
                 description={`${weather.city} ${weather.country} flag`}
               />
-              <span>{weather.city}</span>
+              <span data-cy="city">{weather.city}</span>
             </div>
             <div className={styles.details}>
-              <span>Feels like {weather.feelsLike}&#176;C</span>
+              <span>
+                Feels like <span data-cy="feels-like">{weather.feelsLike}</span>
+                &#176;C
+              </span>
               <span>&#x2022;</span>
-              <span>Humidity {weather.humidity}%</span>
+              <span>
+                Humidity <span data-cy="humidity">{weather.humidity}</span>%
+              </span>
             </div>
             <div className={styles.imageContainer}>
               <SkeletonImage

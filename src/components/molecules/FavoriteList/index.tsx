@@ -19,11 +19,13 @@ const FavoriteList = () => {
             onClick={() => setQuery(favorite.name)}
             role="button"
             aria-label={`Show ${favorite.name}`}
+            data-cy={`favorite-${favorite.name}`}
           >
             <button
               aria-label="Remove"
               className={styles.removeButton}
               onClick={() => removeFromFavorites(favorite.name)}
+              data-cy={`remove-favorite-${favorite.name}`}
             >
               <IconX size={20} stroke={1} />
             </button>
