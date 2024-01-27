@@ -9,7 +9,7 @@ interface SearchProps {
   theme?: "dark" | "light";
 }
 
-const Search = ({ theme = "dark" }: SearchProps) => {
+const Search = ({ theme = "dark", ...rest }: SearchProps) => {
   const [value, setValue] = useState("Berlin");
   const { setQuery, query } = useSearch();
 
@@ -23,7 +23,7 @@ const Search = ({ theme = "dark" }: SearchProps) => {
   }, [query]);
 
   return (
-    <form className={styles.root} onSubmit={handleOnSearch}>
+    <form className={styles.root} onSubmit={handleOnSearch} {...rest}>
       <Input
         placeholder="Search place"
         className={styles.input}

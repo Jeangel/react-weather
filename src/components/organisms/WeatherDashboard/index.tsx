@@ -6,7 +6,7 @@ const WeatherDashboard = () => {
   return (
     <div className={styles.root}>
       <div className={styles.search}>
-        <Search theme="light" />
+        <Search data-cy="dashboard-search" theme="light" />
       </div>
       <FavoriteList />
     </div>
