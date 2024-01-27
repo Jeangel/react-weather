@@ -1,0 +1,24 @@
+@import url("@/theme.css");
+
+.root {
+  border: 1px solid var(--border);
+  color: var(--dark-foreground);
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  display: inline-flex;
+  place-items: center;
+}
+
+.root:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.root:hover:not(:disabled) {
+  background-color: var(--border);
+}
+
+.root:active:not(:disabled) {
+  filter: brightness(85%);
+}

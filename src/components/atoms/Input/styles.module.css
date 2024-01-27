@@ -1,0 +1,9 @@
+@import url("@/theme.css");
+
+.root {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--dark-foreground);
+}
