@@ -16,7 +16,7 @@
 4. Select browser
 5. Select `App.cy.ts`
 
-## What could be improved
+## TODO
 
 - Create fixtures for E2E tests to not use the real API
 - Use dynamic image resizing from Unsplash API
