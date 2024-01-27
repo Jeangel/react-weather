@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.input {
+  min-width: 200px;
+  height: 2.25rem;
+}
