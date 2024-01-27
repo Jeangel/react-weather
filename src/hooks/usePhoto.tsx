@@ -22,7 +22,7 @@ export const usePhoto = ({ name }: UsePhotoArgs) => {
       const response = await fetch(`${UNSPLASH_API}/search/photos?${params}`);
       const { results }: SearchPhotosResponse = await response.json();
       const [result] = results;
-      return result.urls.full;
+      return result.urls.regular;
     },
   });
   return query;
