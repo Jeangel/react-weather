@@ -1,14 +1,16 @@
 import styles from "./styles.module.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  
+  theme?: "dark" | "light";
 }
 
-const Button = (props: ButtonProps) => {
+const Button = ({ theme = 'dark', ...props }: ButtonProps) => {
   return (
     <button
       {...props}
-      className={`${styles.root} ${props.className ? props.className : ""}`}
+      className={`${styles.root} ${
+        theme === "dark" ? styles.dark : styles.light
+      } ${props.className ? props.className : ""}`}
     />
   );
 };

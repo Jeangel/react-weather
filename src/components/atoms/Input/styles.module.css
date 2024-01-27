@@ -2,8 +2,16 @@
 
 .root {
   background-color: transparent;
-  border: 1px solid var(--border);
   padding: 8px;
   border-radius: 4px;
+}
+
+.dark {
+  border: 1px solid var(--dark-border);
   color: var(--dark-foreground);
+}
+
+.light {
+  border: 1px solid var(--light-border);
+  color: var(--light-foreground);
 }

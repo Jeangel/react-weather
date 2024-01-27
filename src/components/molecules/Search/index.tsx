@@ -5,7 +5,11 @@ import { IconSearch } from "@tabler/icons-react";
 import { useState } from "react";
 import useSearch from "@/hooks/useSearch";
 
-const Search = () => {
+interface SearchProps {
+  theme?: "dark" | "light";
+}
+
+const Search = ({ theme = "dark" }: SearchProps) => {
   const [value, setValue] = useState("");
   const { setQuery } = useSearch();
 
@@ -20,8 +24,9 @@ const Search = () => {
         placeholder="Search new place"
         className={styles.input}
         onChange={(e) => setValue(e.target.value)}
+        theme={theme}
       />
-      <Button disabled={!value} aria-label="Search" type="submit">
+      <Button disabled={!value} aria-label="Search" type="submit" theme={theme}>
         <IconSearch stroke={1} size={20} />
       </Button>
     </form>

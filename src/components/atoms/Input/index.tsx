@@ -1,12 +1,16 @@
 import styles from "./styles.module.css";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  theme?: "dark" | "light";
+}
 
-const Input = (props: InputProps) => {
+const Input = ({ theme = "dark", ...props }: InputProps) => {
   return (
     <input
       {...props}
-      className={`${styles.root} ${props.className ? props.className : ""}`}
+      className={`${styles.root} ${
+        theme === "dark" ? styles.dark : styles.light
+      } ${props.className ? props.className : ""}`}
     />
   );
 };

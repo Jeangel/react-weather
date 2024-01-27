@@ -1,8 +1,6 @@
 @import url("@/theme.css");
 
 .root {
-  border: 1px solid var(--border);
-  color: var(--dark-foreground);
   background-color: transparent;
   cursor: pointer;
   border-radius: 8px;
@@ -17,10 +15,22 @@
   cursor: not-allowed;
 }
 
-.root:hover:not(:disabled) {
-  background-color: var(--border);
+.dark {
+  border: 1px solid var(--dark-border);
+  color: var(--dark-foreground);
 }
 
+.light {
+  border: 1px solid var(--light-border);
+  color: var(--light-foreground);
+}
+
+.dark:hover:not(:disabled) {
+  background-color: var(--dark-border);
+}
+.light:hover:not(:disabled) {
+  background-color: var(--light-border);
+}
 .root:active:not(:disabled) {
   filter: brightness(85%);
 }
