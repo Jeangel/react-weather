@@ -1,0 +1,15 @@
+@import url("@/theme.css");
+
+.root {
+  background-color: var(--light-background);
+  color: var(--light-foreground);
+  min-height: 30%;
+}
+
+@media (min-width: 768px) {
+  .root {
+    height: 100%;
+    width: 60%;
+    order: 1;
+  }
+}
