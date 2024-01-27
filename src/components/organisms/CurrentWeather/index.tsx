@@ -30,7 +30,7 @@ const CurrentWeather = () => {
           <Search />
         </div>
         <Button
-          disabled={!weather}
+          disabled={!weather || !image}
           onClick={handleOnToggleFavorite}
           data-cy="favorite-button"
         >
