@@ -62,9 +62,12 @@
 
 @media (min-width: 768px) {
   .root {
-    flex-direction: row;
     width: 40%;
     order: 2;
+    height: 100%;
+  }
+  .topBar {
+    justify-content: flex-end;
   }
   .search {
     display: none;

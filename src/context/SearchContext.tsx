@@ -22,7 +22,7 @@ interface SearchProviderProps {
 }
 
 export const SearchProvider = ({ children }: SearchProviderProps) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Berlin");
   const {
     data: weather,
     refetch: fetchWeather,

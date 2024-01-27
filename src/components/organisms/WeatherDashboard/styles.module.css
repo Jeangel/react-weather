@@ -4,6 +4,11 @@
   background-color: var(--light-background);
   color: var(--light-foreground);
   min-height: 30%;
+  padding: 1.5rem;
+}
+
+.search {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -11,5 +16,9 @@
     height: 100%;
     width: 60%;
     order: 1;
+  }
+
+  .search {
+    display: block;
   }
 }

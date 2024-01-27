@@ -10,7 +10,7 @@ interface SearchProps {
 }
 
 const Search = ({ theme = "dark" }: SearchProps) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("Berlin");
   const { setQuery } = useSearch();
 
   const handleOnSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,10 +21,11 @@ const Search = ({ theme = "dark" }: SearchProps) => {
   return (
     <form className={styles.root} onSubmit={handleOnSearch}>
       <Input
-        placeholder="Search new place"
+        placeholder="Search place"
         className={styles.input}
         onChange={(e) => setValue(e.target.value)}
         theme={theme}
+        value={value}
       />
       <Button disabled={!value} aria-label="Search" type="submit" theme={theme}>
         <IconSearch stroke={1} size={20} />

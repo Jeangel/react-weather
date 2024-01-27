@@ -35,11 +35,11 @@ const CurrentWeather = () => {
             </div>
             <p className={styles.temperature}>{weather?.temperature}&#176;C</p>
             <div className={styles.location}>
-              <span>{weather.city}, </span>
               <CountryFlag
                 country={weather.country}
                 description={`${weather.city} ${weather.country} flag`}
               />
+              <span>{weather.city}</span>
             </div>
             <div className={styles.details}>
               <span>Feels like {weather.feelsLike}&#176;C</span>
