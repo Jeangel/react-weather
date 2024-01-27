@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# ⛈️ React Weather 🌦️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to run the app
 
-Currently, two official plugins are available:
+1. Clone the repository
+2. Run `npm install` (App was created with node version v20.10.0)
+3. Create a `.env` file using as reference the `.env.example` file
+4. Run `npm run dev` to run the application
+5. App should be available on http://localhost:5173
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run E2E tests
 
-## Expanding the ESLint configuration
+1. Run the application (previous steps)
+2. Run `npm run cypress:open`
+3. Select E2E testing
+4. Select browser
+5. Select `App.cy.ts`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## What could be improved
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Create fixtures for E2E tests to not use the real API
+- Use dynamic image resizing from Unsplash API
+- Error handling in general
+- Loading state when API is loading
+- Display Hourly/Daily weather in the Dashboard section (Under favorites)
+- Improve look and feel
+- A11y improvements (roles, markup semantic, proper labels)
