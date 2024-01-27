@@ -2,7 +2,7 @@ import Input from "@/components/atoms/Input";
 import styles from "./styles.module.css";
 import Button from "@/components/atoms/Button";
 import { IconSearch } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSearch from "@/hooks/useSearch";
 
 interface SearchProps {
@@ -11,12 +11,16 @@ interface SearchProps {
 
 const Search = ({ theme = "dark" }: SearchProps) => {
   const [value, setValue] = useState("Berlin");
-  const { setQuery } = useSearch();
+  const { setQuery, query } = useSearch();
 
   const handleOnSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setQuery(value);
   };
+
+  useEffect(() => {
+    setValue(query);
+  }, [query]);
 
   return (
     <form className={styles.root} onSubmit={handleOnSearch}>
@@ -26,6 +30,7 @@ const Search = ({ theme = "dark" }: SearchProps) => {
         onChange={(e) => setValue(e.target.value)}
         theme={theme}
         value={value}
+        type="search"
       />
       <Button disabled={!value} aria-label="Search" type="submit" theme={theme}>
         <IconSearch stroke={1} size={20} />

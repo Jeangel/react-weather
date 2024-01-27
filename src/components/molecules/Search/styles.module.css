@@ -8,3 +8,9 @@
   min-width: 200px;
   height: 2.25rem;
 }
+
+@media (min-width: 768px) {
+  .input {
+    min-width: 350px;
+  }
+}
