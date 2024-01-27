@@ -28,7 +28,7 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     setFavorites((prev) => prev.concat(location));
   };
   const removeFromFavorites = (name: string) => {
-    setFavorites((prev) => prev.filter((e) => e.name === name));
+    setFavorites((prev) => prev.filter((e) => e.name !== name));
   };
 
   return (
