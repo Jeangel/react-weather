@@ -1,21 +1,27 @@
 import Search from "@/components/molecules/Search";
 import styles from "./styles.module.css";
 import Button from "@/components/atoms/Button";
-import { IconHeart } from "@tabler/icons-react";
+import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
 import useSearch from "@/hooks/useSearch";
 import { format } from "date-fns";
 import CountryFlag from "@/components/atoms/CountryFlag";
 import WeatherIcon from "@/components/atoms/WeatherIcon";
-import { useEffect, useState } from "react";
-import Skeleton from "@/components/atoms/Skeleton";
+import useFavorites from "@/hooks/useFavorites";
+import { SkeletonImage } from "@/components/atoms/SkeletonImage";
 
 const CurrentWeather = () => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { addToFavorites, favorites, removeFromFavorites } = useFavorites();
   const { weather, image } = useSearch();
 
-  useEffect(() => {
-    setIsImageLoaded(false);
-  }, [image]);
+  const isFavorite = favorites.some((e) => e.name === weather?.city);
+
+  const handleOnToggleFavorite = () => {
+    if (!weather || !image) return;
+
+    isFavorite
+      ? removeFromFavorites(weather.city)
+      : addToFavorites({ name: weather.city, image });
+  };
 
   return (
     <section className={styles.root}>
@@ -23,8 +29,12 @@ const CurrentWeather = () => {
         <div className={styles.search}>
           <Search />
         </div>
-        <Button disabled={!weather}>
-          <IconHeart stroke={1} size={20} />
+        <Button disabled={!weather} onClick={handleOnToggleFavorite}>
+          {isFavorite ? (
+            <IconHeartFilled stroke={1} size={20} />
+          ) : (
+            <IconHeart stroke={1} size={20} />
+          )}
         </Button>
       </nav>
       {weather && (
@@ -54,19 +64,12 @@ const CurrentWeather = () => {
               <span>Humidity {weather.humidity}%</span>
             </div>
             <div className={styles.imageContainer}>
-              <img
+              <SkeletonImage
                 src={image}
                 alt={`Photo of ${weather.city} city`}
                 className={styles.image}
-                onLoad={() => setIsImageLoaded(true)}
-                style={{ display: isImageLoaded ? "block" : "none" }}
-              />
-              <Skeleton
-                style={{
-                  height: 200,
-                  width: 300,
-                  display: isImageLoaded ? "none" : "block",
-                }}
+                width={300}
+                height={200}
               />
             </div>
           </div>
