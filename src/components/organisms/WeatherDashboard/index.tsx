@@ -1,5 +1,6 @@
 import Search from "@/components/molecules/Search";
 import styles from "./styles.module.css";
+import FavoriteList from "@/components/molecules/FavoriteList";
 
 const WeatherDashboard = () => {
   return (
@@ -7,6 +8,7 @@ const WeatherDashboard = () => {
       <div className={styles.search}>
         <Search theme="light" />
       </div>
+      <FavoriteList />
     </div>
   );
 };

@@ -3,12 +3,13 @@
 .root {
   background-color: var(--light-background);
   color: var(--light-foreground);
-  min-height: 30%;
   padding: 1.5rem;
+  height: 100%;
 }
 
 .search {
   display: none;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
