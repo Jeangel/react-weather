@@ -1,9 +1,10 @@
+import { usePhoto } from "@/hooks/usePhoto";
 import useWeather, { UseWeatherResponse } from "@/hooks/useWeather";
 import { createContext, useEffect, useState } from "react";
 
 interface SearchContextValue {
   weather?: UseWeatherResponse;
-  location?: object;
+  image?: string;
   isLoading: boolean;
   query: string;
   setQuery: (query: string) => void;
@@ -11,7 +12,7 @@ interface SearchContextValue {
 
 const SearchContext = createContext<SearchContextValue>({
   weather: undefined,
-  location: undefined,
+  image: undefined,
   isLoading: false,
   query: "",
   setQuery: () => {},
@@ -28,16 +29,25 @@ export const SearchProvider = ({ children }: SearchProviderProps) => {
     refetch: fetchWeather,
     isLoading,
   } = useWeather({ city: query });
+  const { data: photo, refetch: fetchPhoto } = usePhoto({ name: query });
 
   useEffect(() => {
     if (query) {
-      fetchWeather();
+      fetchWeather().then(() => {
+        fetchPhoto();
+      });
     }
-  }, [query, fetchWeather]);
+  }, [query, fetchWeather, fetchPhoto]);
 
   return (
     <SearchContext.Provider
-      value={{ query, setQuery, isLoading, location: undefined, weather }}
+      value={{
+        query,
+        setQuery,
+        isLoading: isLoading,
+        image: photo,
+        weather,
+      }}
     >
       {children}
     </SearchContext.Provider>
