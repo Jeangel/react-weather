@@ -24,6 +24,7 @@ const useWeather = ({ city }: UseWeatherArgs) => {
   return useQuery<UseWeatherResponse>({
     enabled: false,
     queryKey: ["weather", city],
+    staleTime: 1000 * 60 * 30,
     queryFn: async () => {
       const geoParams = new URLSearchParams({
         q: city,
