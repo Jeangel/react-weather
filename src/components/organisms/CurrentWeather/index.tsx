@@ -6,9 +6,16 @@ import useSearch from "@/hooks/useSearch";
 import { format } from "date-fns";
 import CountryFlag from "@/components/atoms/CountryFlag";
 import WeatherIcon from "@/components/atoms/WeatherIcon";
+import { useEffect, useState } from "react";
+import Skeleton from "@/components/atoms/Skeleton";
 
 const CurrentWeather = () => {
-  const { weather } = useSearch();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { weather, image } = useSearch();
+
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [image]);
 
   return (
     <section className={styles.root}>
@@ -16,13 +23,13 @@ const CurrentWeather = () => {
         <div className={styles.search}>
           <Search />
         </div>
-        <Button disabled>
+        <Button disabled={!weather}>
           <IconHeart stroke={1} size={20} />
         </Button>
       </nav>
-      <div className={styles.weather}>
-        {weather && (
-          <>
+      {weather && (
+        <>
+          <div className={styles.weather}>
             <div className={styles.dateContainer}>
               <WeatherIcon
                 name={weather.iconId}
@@ -46,9 +53,25 @@ const CurrentWeather = () => {
               <span>&#x2022;</span>
               <span>Humidity {weather.humidity}%</span>
             </div>
-          </>
-        )}
-      </div>
+            <div className={styles.imageContainer}>
+              <img
+                src={image}
+                alt={`Photo of ${weather.city} city`}
+                className={styles.image}
+                onLoad={() => setIsImageLoaded(true)}
+                style={{ display: isImageLoaded ? "block" : "none" }}
+              />
+              <Skeleton
+                style={{
+                  height: 200,
+                  width: 300,
+                  display: isImageLoaded ? "none" : "block",
+                }}
+              />
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 };
