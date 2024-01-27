@@ -16,7 +16,10 @@ const FavoriteList = () => {
           <div
             className={styles.item}
             key={favorite.name}
-            onClick={() => setQuery(favorite.name)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setQuery(favorite.name);
+            }}
             role="button"
             aria-label={`Show ${favorite.name}`}
             data-cy={`favorite-${favorite.name}`}
@@ -24,7 +27,10 @@ const FavoriteList = () => {
             <button
               aria-label="Remove"
               className={styles.removeButton}
-              onClick={() => removeFromFavorites(favorite.name)}
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFromFavorites(favorite.name);
+              }}
               data-cy={`remove-favorite-${favorite.name}`}
             >
               <IconX size={20} stroke={1} />
